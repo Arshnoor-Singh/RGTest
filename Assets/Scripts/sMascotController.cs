@@ -4,8 +4,23 @@ using UnityEngine.Splines;
 public class sMascotController : MonoBehaviour
 {
     [SerializeField] private SplineAnimate mascotSplineAnimate;
-    
+    [SerializeField] private Rigidbody rigid;
+    private bool walk; 
+
+    [SerializeField] Animator animator;
+
     //Function will be called by the SceneController when the player will have to move
+    void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
+
+    void Update()
+    {
+        walk = mascotSplineAnimate.IsPlaying;
+        animator.SetBool("isWalking", walk);
+    }
+
     public void MoveMascot()
     {
         mascotSplineAnimate.Restart(false);

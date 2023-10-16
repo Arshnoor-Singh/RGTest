@@ -27,6 +27,7 @@ public class sGameMode : MonoBehaviour
         }
         else
         {
+            Debug.Log("Next Chapter Reached");
             sceneControllers[currentController].SetAsActiveController(sceneControllers[currentController].GetFinalPoint());
         }
     }

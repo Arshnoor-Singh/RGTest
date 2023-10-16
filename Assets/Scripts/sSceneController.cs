@@ -23,8 +23,6 @@ public class sSceneController : MonoBehaviour
         gameModeReference = FindObjectOfType<sGameMode>();
         MascotInitialisation();
     }
-
-    
     
     // Function Called by GameMode at Start of the game to activate the First Chapter/SceneController
     public void SetAsActiveController()

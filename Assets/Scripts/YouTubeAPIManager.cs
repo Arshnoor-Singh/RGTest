@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.Video;
 
 public class YouTubeAPIManager : MonoBehaviour
 {
@@ -33,15 +34,22 @@ public class YouTubeAPIManager : MonoBehaviour
             }
             else
             {
-                //VideoData videoData = JsonConvert.DeserializeObject<VideoData>(www.downloadHandler.text);
                 
-                // Extract the video ID from the parsed data.
-                //string videoId = videoData.contentDetails.videoId;
+                // Assuming you have already fetched the video URL using YouTubeAPIManager
+                string videoUrl = "https://www.youtube.com/watch?v=RNUakOk4pXQ"; // Replace with the actual video URL
+
                 
+                string jsonResult = www.downloadHandler.text;
+                //string videoURL = ParseVideoURLFromJSON(jsonResult);
+
                 // Construct the video URL.
-                //string videoUrl = "https://www.youtube.com/watch?v=" + videoId;
+                string videoURL = "https://www.youtube.com/watch?v=" + videoId;
                 
-                //VPlayer.PlayVideo(videoUrl);
+                
+                
+                
+                // Call the PlayVideo function to start playing the video.
+                VPlayer.PlayVideo(videoUrl);
             }
         }
     }
