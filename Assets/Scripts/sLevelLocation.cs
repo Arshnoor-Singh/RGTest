@@ -11,28 +11,29 @@ public class sLevelLocation : MonoBehaviour
     [SerializeField] private bool isFirst;
     [SerializeField] private bool isLast;
     
-    [Header("DO NOT CHANGE")]
-    [SerializeField] private Material[] mats_FL;
+    [Header("Operational Fields, DO NOT CHANGE")]
+    [SerializeField] private Material[] matsFL;
     [SerializeField] private TextMeshPro levelCountLabelF;
     [SerializeField] private TextMeshPro levelCountLabelB;
     [SerializeField] private MeshRenderer flagRenderer;
     [SerializeField] private SplineContainer associatedSpline;
-    
     [SerializeField] private GameObject flag;
 
-    //Unity Start Event
+    // Unity Start Event
     private void Start()
     {
-        //Generates Label At Level Start for all instances
+        // Generates Label At Level Start for all instances
         FlagInitialisation();
     }
     
-    //Return the start Position of the associated Spline
+    // Return the start Position of the associated Spline
     public Vector3 ReturnSplineStart()
     {
         return associatedSpline.EvaluatePosition(0);
     }
 
+    // Returns the position the End point of the spline of the current chapter
+    // Currently, This functionality is deprecated
     public Vector3 ReturnSplineEnd()
     {
         if (!isLast)
@@ -41,18 +42,18 @@ public class sLevelLocation : MonoBehaviour
             return transform.position;
     }
 
-    //Generates Label and Start for all instances
+    // Generates Label and Start for all instances
     private void FlagInitialisation()
     {
         if (isFirst)
         {
-            flagRenderer.sharedMaterials[1] = mats_FL[0];
+            flagRenderer.sharedMaterials[1] = matsFL[0];
             levelCountLabelF.text = "1";
             levelCountLabelB.text = "1";
         }
         else if(isLast)
         {
-            flagRenderer.sharedMaterials[1] = mats_FL[1];
+            flagRenderer.sharedMaterials[1] = matsFL[1];
             levelCountLabelF.text = flagLevel.ToString();
             levelCountLabelB.text = flagLevel.ToString();
         }
@@ -63,7 +64,7 @@ public class sLevelLocation : MonoBehaviour
         }
     }
     
-    // ----- MAY NEED TO BE DEPRECATED ---- Event Executed when the Mascot enters the Trigger of the next Flag
+    // Event Executed when the Mascot enters the Trigger of the next Flag
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Mascot"))
@@ -72,22 +73,13 @@ public class sLevelLocation : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Mascot"))
-        {
-            flag.GetComponent<Renderer>().materials[1].color = Color.HSVToRGB(40,38,89);
-        }
-
-    }
-
-    //Returns the Associated Spline
+    // Returns the Associated Spline
     public SplineContainer GetAssociatedSpline()
     {
         return associatedSpline;
     }
     
-    //Returns the value of the public boolean to check if this is the last flag
+    // Returns the value of the public boolean to check if this is the last flag
     public bool isFinal()
     {
         return isLast;

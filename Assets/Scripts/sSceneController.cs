@@ -6,14 +6,14 @@ public class sSceneController : MonoBehaviour
     [SerializeField] private sLevelLocation[] levelsArray;
     [SerializeField] private sMascotController mascotReference;
 
-    //Holds the value of the level the player is currently at for other scripts to reference
+    // Holds the value of the level the player is currently at for other scripts to reference
     private bool isActiveSceneController;
     private int currentLevel;
     private sGameMode gameModeReference;
-    private Vector3 startPoint;
+    private Vector3 startPoint; // Currently the functionality of Start Point is deprecated
 
     
-    //Unity Event
+    // Unity Start Event
     private void Start()
     {
         gameModeReference = FindObjectOfType<sGameMode>();
@@ -23,7 +23,7 @@ public class sSceneController : MonoBehaviour
     // Function Called by GameMode at Start of the game to activate the First Chapter/SceneController
     public void SetAsActiveController()
     {
-        //Get the Start point of the chapter and Put the Mascot at that location
+        // Get the Start point of the chapter and Put the Mascot at that location
         isActiveSceneController = true;
         currentLevel = 0;
         startPoint = levelsArray[currentLevel].ReturnSplineStart();
@@ -41,43 +41,40 @@ public class sSceneController : MonoBehaviour
     }
     
 
-    //Function to Deactivate this chapter
+    // Function to Deactivate this chapter
     public void DeActivateController()
     {
         isActiveSceneController = false;
     }
     
-    
+    // Function to Set Spline at Game Start
+    // This Function only executes once at Start
     void MascotInitialisation()
     {
         if(isActiveSceneController) 
             mascotReference.SetMascotSpline(levelsArray[0].GetAssociatedSpline());
     }
 
-    public void OnButtonClicked()
-    {
-        VideoComplete();
-    }
-
+    // This Function is Executed when a video finishes playing
     public void VideoComplete()
     {
         if (isActiveSceneController)
         {
-            //If the Mascot is at the final flag of the current chapter, Move it to the next chapter
+            // If the Mascot is at the final flag of the current chapter, Move it to the next chapter
             if (levelsArray[currentLevel].isFinal())
             {
                 gameModeReference.ChangeSceneController();
                 return;
             }
 
-            //If the Mascot is not at the Final Flag, Change Spline and move the mascot to the next flag
+            // If the Mascot is not at the Final Flag, Change Spline and move the mascot to the next flag
             mascotReference.SetMascotSpline(levelsArray[currentLevel].GetAssociatedSpline());
             mascotReference.MoveMascot();
             currentLevel++;
         }
     }
     
-    //Returns the location of the Final Flag
+    // Returns the location of the Final Flag
     public Vector3 GetFinalPoint()
     {
         return levelsArray[levelsArray.Length - 1].ReturnSplineEnd();

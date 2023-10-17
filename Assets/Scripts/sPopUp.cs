@@ -6,12 +6,9 @@ public class sPopUp : MonoBehaviour
     [SerializeField] private sVPController videoController;
     [SerializeField] private GameObject vpGameObject;
 
+    // Function to execute when Yes is clicked
     public void OnYesClicked()
     {
-        Debug.LogWarning("Yes Clicked in UI");
-        
-        
-        
         vpGameObject.SetActive(true);
         videoController.RandomiseVideo();
         videoController.PlayVideo();
@@ -19,7 +16,8 @@ public class sPopUp : MonoBehaviour
         //youtubeAPI.FetchVideoInfo();
         popUpCanvas.SetActive(false);
     }
-
+    
+    // Function to execute when No is clikced
     public void OnNoClicked()
     {
         popUpCanvas.SetActive(false);
