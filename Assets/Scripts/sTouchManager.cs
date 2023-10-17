@@ -2,11 +2,6 @@ using UnityEngine;
 
 public class sTouchManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -25,9 +20,8 @@ public class sTouchManager : MonoBehaviour
             }
         }
 
-        //Following If Statement is only to check the functionality on Computer
 #if UNITY_EDITOR
-        
+        //Following If Statement is only to check the functionality on Computer      
         if (Input.GetMouseButtonDown(0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -41,8 +35,6 @@ public class sTouchManager : MonoBehaviour
                 }
             }
         }
-
 #endif
-        
     }
 }

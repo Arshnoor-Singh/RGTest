@@ -18,18 +18,11 @@ public class sLevelLocation : MonoBehaviour
     [SerializeField] private MeshRenderer flagRenderer;
     [SerializeField] private SplineContainer associatedSpline;
     
-    private sSceneController sceneController;
-    private sMascotController mascot;
+    [SerializeField] private GameObject flag;
 
     //Unity Start Event
     private void Start()
     {
-        //get scene controller reference
-        sceneController = FindFirstObjectByType<sSceneController>();
-
-        //get Mascot Reference
-        mascot = FindFirstObjectByType<sMascotController>();
-        
         //Generates Label At Level Start for all instances
         FlagInitialisation();
     }
@@ -73,9 +66,21 @@ public class sLevelLocation : MonoBehaviour
     // ----- MAY NEED TO BE DEPRECATED ---- Event Executed when the Mascot enters the Trigger of the next Flag
     void OnTriggerEnter(Collider other)
     {
-        //Do something on Entering the new level
+        if (other.CompareTag("Mascot"))
+        {
+            flag.GetComponent<Renderer>().materials[1].color = Color.HSVToRGB(169,31,65);
+        }
     }
-    
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Mascot"))
+        {
+            flag.GetComponent<Renderer>().materials[1].color = Color.HSVToRGB(40,38,89);
+        }
+
+    }
+
     //Returns the Associated Spline
     public SplineContainer GetAssociatedSpline()
     {

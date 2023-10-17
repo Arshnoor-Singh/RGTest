@@ -30,7 +30,6 @@ public class sSceneController : MonoBehaviour
     }
 
     
-    
     // Function Called by GameMode Object to Change to the New Chapter/NextSceneController
     public void SetAsActiveController(Vector3 endOfPreviousChapter)
     {
@@ -49,23 +48,18 @@ public class sSceneController : MonoBehaviour
     }
     
     
-    
     void MascotInitialisation()
     {
         if(isActiveSceneController) 
             mascotReference.SetMascotSpline(levelsArray[0].GetAssociatedSpline());
     }
 
-    
-    
     public void OnButtonClicked()
     {
         VideoComplete();
     }
-    
-    
-    
-    void VideoComplete()
+
+    public void VideoComplete()
     {
         if (isActiveSceneController)
         {
@@ -82,13 +76,11 @@ public class sSceneController : MonoBehaviour
             currentLevel++;
         }
     }
-   
-    
     
     //Returns the location of the Final Flag
     public Vector3 GetFinalPoint()
     {
         return levelsArray[levelsArray.Length - 1].ReturnSplineEnd();
     }
-    
+
 }

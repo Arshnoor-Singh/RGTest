@@ -4,12 +4,12 @@ using UnityEngine.Splines;
 public class sMascotController : MonoBehaviour
 {
     [SerializeField] private SplineAnimate mascotSplineAnimate;
-    private bool walk;
-
     [SerializeField] Animator animator;
     [SerializeField] private GameObject popUpObject;
 
-    //Function will be called by the SceneController when the player will have to move
+    private bool walk;
+    private bool canBeTouched = true;
+    
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -43,9 +43,14 @@ public class sMascotController : MonoBehaviour
         return walk;
     }
 
+    public void SetCanBeTouched(bool newTouchStatus)
+    {
+        canBeTouched = newTouchStatus;
+    }
+
     public void MascotTouched()
     {
-        if (!walk)
+        if (!walk && canBeTouched)
         {
             if (popUpObject.activeInHierarchy == false)
             {

@@ -3,12 +3,20 @@ using UnityEngine;
 public class sPopUp : MonoBehaviour
 {
     [SerializeField] private GameObject popUpCanvas;
-    [SerializeField] private YouTubeAPIManager youtubeAPI;
+    [SerializeField] private sVPController videoController;
+    [SerializeField] private GameObject vpGameObject;
 
     public void OnYesClicked()
     {
         Debug.LogWarning("Yes Clicked in UI");
-        youtubeAPI.FetchVideoInfo();
+        
+        
+        
+        vpGameObject.SetActive(true);
+        videoController.RandomiseVideo();
+        videoController.PlayVideo();
+        
+        //youtubeAPI.FetchVideoInfo();
         popUpCanvas.SetActive(false);
     }
 
