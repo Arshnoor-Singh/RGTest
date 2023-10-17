@@ -60,7 +60,6 @@ public class sLevelLocation : MonoBehaviour
         else if(isLast)
         {
             flagRenderer.sharedMaterials[1] = mats_FL[1];
-            Debug.Log("Is Last Executed");
             levelCountLabelF.text = flagLevel.ToString();
             levelCountLabelB.text = flagLevel.ToString();
         }

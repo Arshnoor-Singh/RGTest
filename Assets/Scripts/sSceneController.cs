@@ -1,8 +1,4 @@
-using System;
 using UnityEngine;
-using UnityEngine.Splines;
-using TMPro;
-using UnityEngine.UIElements;
 
 public class sSceneController : MonoBehaviour
 {
@@ -64,8 +60,7 @@ public class sSceneController : MonoBehaviour
     
     public void OnButtonClicked()
     {
-        if(isActiveSceneController) 
-            VideoComplete();
+        VideoComplete();
     }
     
     
@@ -74,23 +69,18 @@ public class sSceneController : MonoBehaviour
     {
         if (isActiveSceneController)
         {
-            Debug.Log("Current Level = " + currentLevel);
             //If the Mascot is at the final flag of the current chapter, Move it to the next chapter
             if (levelsArray[currentLevel].isFinal())
             {
-                Debug.Log("New Chapter Requested");
                 gameModeReference.ChangeSceneController();
                 return;
             }
 
-            Debug.Log("Final Condition = " + levelsArray[currentLevel].isFinal());
-        
             //If the Mascot is not at the Final Flag, Change Spline and move the mascot to the next flag
             mascotReference.SetMascotSpline(levelsArray[currentLevel].GetAssociatedSpline());
             mascotReference.MoveMascot();
             currentLevel++;
         }
-
     }
    
     
