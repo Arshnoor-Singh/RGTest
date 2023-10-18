@@ -47,13 +47,11 @@ public class sLevelLocation : MonoBehaviour
     {
         if (isFirst)
         {
-            flagRenderer.sharedMaterials[1] = matsFL[0];
             levelCountLabelF.text = "1";
             levelCountLabelB.text = "1";
         }
         else if(isLast)
         {
-            flagRenderer.sharedMaterials[1] = matsFL[1];
             levelCountLabelF.text = flagLevel.ToString();
             levelCountLabelB.text = flagLevel.ToString();
         }

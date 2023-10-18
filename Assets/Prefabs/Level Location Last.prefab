@@ -393,17 +393,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flagLevel: 0
   isFirst: 0
-  isLast: 0
-  mats_FL:
-  - {fileID: 2100000, guid: 1778dcc26eaaa4849b6a82051da56ffa, type: 2}
-  - {fileID: 2100000, guid: c2e7aae3a8dbc0d4a86cf8c6a7639a1e, type: 2}
+  isLast: 1
+  matsFL: []
   levelCountLabelF: {fileID: 6788437366870161461}
   levelCountLabelB: {fileID: 2650791016237100423}
   flagRenderer: {fileID: 20148281949648297}
   associatedSpline: {fileID: 0}
   flag: {fileID: 1965654872910910588}
-  ContactMaterial: {fileID: 2100000, guid: c2e7aae3a8dbc0d4a86cf8c6a7639a1e, type: 2}
-  NormalMaterial: {fileID: 2100000, guid: bc9e41274e0361d42b3deec50efe0e71, type: 2}
 --- !u!65 &1429387440253445144
 BoxCollider:
   m_ObjectHideFlags: 0
